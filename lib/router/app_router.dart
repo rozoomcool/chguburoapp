@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 
+import '../domain/state/auth/auth_cubit.dart';
 import '../presentation/screens/auth/auth_screen.dart';
 import '../presentation/screens/home/home_screen.dart';
 import '../presentation/screens/profile/profile_screen.dart';
@@ -11,14 +12,16 @@ part 'app_router.gr.dart';
 @AutoRouterConfig(replaceInRouteName: 'Screen,Route')
 class AppRouter extends _$AppRouter {
 
-  AppRouter();
+  final AuthState authState;
+
+  AppRouter(this.authState);
 
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
           path: '/',
           page: RootRoute.page,
-          guards: [AuthGuard()],
+          guards: [AuthGuard(authState)],
           children: [
             RedirectRoute(path: '', redirectTo: 'home'),
             AutoRoute(path: 'home', page: HomeRoute.page),

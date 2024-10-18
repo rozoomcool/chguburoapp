@@ -14,7 +14,7 @@ void main() async {
 
   GetIt.I.registerFactory(() => prefs);
   GetIt.I.registerFactory(() => authSharedRepository);
-  GetIt.I.registerSingleton(() => CustomScaffoldUtil());
+  GetIt.I.registerFactory(() => CustomScaffoldUtil());
   GetIt.I.registerFactory(() => configureDio(authSharedRepository));
 
 
