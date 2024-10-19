@@ -20,7 +20,7 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => AuthCubit()),
+        BlocProvider(create: (context) => AuthCubit()..init()),
         BlocProvider(create: (context) => ThemeCubit())
       ],
       child: BlocBuilder<AuthCubit, AuthState>(

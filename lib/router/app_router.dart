@@ -5,6 +5,7 @@ import '../presentation/screens/auth/auth_screen.dart';
 import '../presentation/screens/home/home_screen.dart';
 import '../presentation/screens/profile/profile_screen.dart';
 import '../presentation/screens/root/root_screen.dart';
+import '../presentation/screens/service/service_screen.dart';
 import 'auth_route_guard.dart';
 
 part 'app_router.gr.dart';
@@ -25,7 +26,8 @@ class AppRouter extends _$AppRouter {
           children: [
             RedirectRoute(path: '', redirectTo: 'home'),
             AutoRoute(path: 'home', page: HomeRoute.page),
-            AutoRoute(path: 'profile', page: ProfileRoute.page)
+            AutoRoute(path: 'profile', page: ProfileRoute.page),
+            AutoRoute(path: 'service', page: ServiceRoute.page),
           ],
         ),
         AutoRoute(path: '/auth', page: AuthRoute.page)
