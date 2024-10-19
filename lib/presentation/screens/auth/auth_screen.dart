@@ -11,19 +11,21 @@ class AuthScreen extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(decoration: InputDecoration(
-                  label: Text("usename")
-              ),),
-              TextField(decoration: InputDecoration(
-                  label: Text("password")
-              ),),
-              ElevatedButton(onPressed: () {}, child: Text("Войти"))
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(decoration: InputDecoration(
+                    label: Text("usename")
+                ),),
+                TextField(decoration: InputDecoration(
+                    label: Text("password")
+                ),),
+                ElevatedButton(onPressed: () {}, child: Text("Войти"))
+              ],
+            ),
           ),
         ),
       ),
