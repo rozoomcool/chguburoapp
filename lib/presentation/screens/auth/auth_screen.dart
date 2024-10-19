@@ -25,65 +25,11 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      bottomSheet: BottomSheet(
-          onClosing: () => {},
-          builder: (context) {
-            return Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Вход в систему",
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  TextField(
-                    controller: _usernameController,
-                    decoration: InputDecoration(
-                        label: const Text("Логин"),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        )),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  TextField(
-                    controller: _passwordController,
-                    decoration: InputDecoration(
-                        label: const Text("Пароль"),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        )),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  SizedBox(
-                      width: double.infinity,
-                      child: FilledButton(
-                        onPressed: () {
-                          context.read<AuthCubit>().signIn(AuthRequest(
-                              username: _usernameController.value.text,
-                              password: _passwordController.value.text));
-                        },
-                        child: Text("Войти",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge
-                                ?.copyWith(color: Colors.white, fontSize: 18)),
-                      )),
-                  const SizedBox(
-                    height: 32,
-                  ),
-                ],
-              ),
-            );
-          }),
+      // bottomSheet: BottomSheet(
+      //     onClosing: () => {},
+      //     builder: (context) {
+      //       return ;
+      //     }),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -126,6 +72,67 @@ class _AuthScreenState extends State<AuthScreen> {
                         .textTheme
                         .bodyLarge
                         ?.copyWith(color: Colors.white, fontSize: 18),
+                  ),
+                  const SizedBox(height: 24,),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(24)
+                    ),
+                    padding: const EdgeInsets.all(24.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Вход в систему",
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        TextField(
+                          controller: _usernameController,
+                          decoration: InputDecoration(
+                              label: const Text("Логин"),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              )),
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        TextField(
+                          controller: _passwordController,
+                          decoration: InputDecoration(
+                              label: const Text("Пароль"),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              )),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        SizedBox(
+                            width: double.infinity,
+                            child: FilledButton(
+                              onPressed: () {
+                                context.read<AuthCubit>().signIn(AuthRequest(
+                                    username: _usernameController.value.text,
+                                    password: _passwordController.value.text));
+                              },
+                              child: Text("Войти",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge
+                                      ?.copyWith(
+                                          color: Colors.white, fontSize: 18)),
+                            )),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),

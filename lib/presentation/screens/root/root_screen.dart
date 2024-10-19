@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:chguburoapp/domain/state/auth/auth_cubit.dart';
 import 'package:chguburoapp/domain/state/theme/theme_cubit.dart';
 import 'package:chguburoapp/router/app_router.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +38,12 @@ class RootScreen extends StatelessWidget {
                     context.read<ThemeCubit>().toggleTheme();
                   },
                   icon: Icon(state is LightModeThemeState ? Iconsax.sun_1 : Iconsax.moon5),
+                ),
+                IconButton(
+                  onPressed: () {
+                    context.read<AuthCubit>().logOut();
+                  },
+                  icon: const Icon(Iconsax.logout),
                 ),
               ],
             );

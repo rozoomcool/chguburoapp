@@ -20,7 +20,8 @@ class AuthCubit extends Cubit<AuthState> {
   final _dio = GetIt.I<Dio>();
 
   init() {
-    if(_authSharedRepository.getAccessToken().isNotEmpty && _authSharedRepository.getAccessToken() != "") {
+    if (_authSharedRepository.getAccessToken().isNotEmpty &&
+        _authSharedRepository.getAccessToken() != "") {
       emit(AuthenticatedAuthState());
     }
   }
@@ -29,15 +30,15 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       debugPrint(_dio.options.baseUrl);
       var response = await _dio.post("/auth/login",
-          data: {
-            "username": user.username,
-            "password": user.password
-          });
+          data: {"username": user.username, "password": user.password});
       debugPrint(response.requestOptions.path);
       if (response.statusCode == 200) {
         var tokens = JwtPayload.fromJson(response.data);
         _authSharedRepository.setTokens(tokens.access, tokens.refresh);
-        GetIt.I<Dio>().options.headers.addAll({"Authorization": "Bearer ${tokens.access}"});
+        GetIt.I<Dio>()
+            .options
+            .headers
+            .addAll({"Authorization": "Bearer ${tokens.access}"});
         _scaffoldUtils.showSnack("Авторизация успешна");
         emit(AuthenticatedAuthState());
       } else {
