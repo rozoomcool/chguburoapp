@@ -10,14 +10,14 @@ class User with _$User {
       required String username,
       String? password,
       required Role role,
-      required Department department,
+      // required Department department,
       DateTime? createdAt,
       DateTime? updatedAt}) = _User;
 
   factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
 }
 
-enum Role { ADMINISTRATION, STUDENT }
+enum Role { STUDENT, EMPLOYEE, MODERATOR, ADMIN }
 
 enum Department {
   STUDENT,

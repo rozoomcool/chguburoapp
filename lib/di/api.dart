@@ -15,34 +15,14 @@ Dio configureDio(AuthSharedRepository authSharedRepository) {
 
   Dio dio = Dio(options);
 
-  // dio.interceptors.add(LogInterceptors());
-  // dio.interceptors.add(InterceptorsWrapper(
-  //   onRequest: (options, handler) async {
-  //     options.headers["Authorization"] =
-  //         "Bearer ${authSharedRepository.getAccessToken()}";
-  //     return handler.next(options);
-  //   },
-  // onError: (err, handler) async {
-  //   var response = err.response;
-  //   if (response != null && response.statusCode == 403) {
-  //     final refreshResponse = await dio.post("/auth/refresh", data: {
-  //       "refreshRequest": {"refresh": authSharedRepository.getRefreshToken()}
-  //     });
-  //     if (refreshResponse.statusCode == 200) {
-  //       authSharedRepository.setTokens(
-  //           refreshResponse.data["access"], refreshResponse.data["refresh"]);
-
-  //       var options = err.requestOptions;
-
-  //       options.headers["Authorization"] =
-  //           authSharedRepository.getAccessToken();
-  //       return handler.resolve(await dio.fetch(err.requestOptions));
-  //     }
-  //   }
-
-  //   return handler.reject(err);
-  // },
-  // ));
+  dio.interceptors.add(LogInterceptors());
+  dio.interceptors.add(InterceptorsWrapper(
+    onRequest: (options, handler) async {
+      options.headers["Authorization"] =
+          "Bearer ${authSharedRepository.getAccessToken()}";
+      return handler.next(options);
+    },
+  ));
 
   return dio;
 }
