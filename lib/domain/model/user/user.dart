@@ -5,19 +5,24 @@ part 'user.g.dart';
 
 @freezed
 class User with _$User {
-  const factory User({
-    int? id,
-    required String username,
-    String? password,
-    required Role role,
-    DateTime? createdAt,
-    DateTime? updatedAt
-  }) = _User;
+  const factory User(
+      {int? id,
+      required String username,
+      String? password,
+      required Role role,
+      required Department department,
+      DateTime? createdAt,
+      DateTime? updatedAt}) = _User;
 
-  factory User.fromJson(Map<String, Object?> json)
-      => _$UserFromJson(json);
+  factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
 }
 
-enum Role {
-  ADMINISTRATION, STUDENT
+enum Role { ADMINISTRATION, STUDENT }
+
+enum Department {
+  STUDENT,
+  ADMINISTRATION,
+  EDUCATION_DEPARTMENT,
+  BOOKKEEPING,
+  HR_DEPARTMENT
 }

@@ -1,3 +1,4 @@
+import 'package:chguburoapp/domain/model/auth_request/auth_request.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<void> signIn(User user) async {
+  Future<void> signIn(AuthRequest user) async {
     try {
       debugPrint(_dio.options.baseUrl);
       var response = await _dio.post("/auth/login",

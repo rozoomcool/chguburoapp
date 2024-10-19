@@ -24,6 +24,7 @@ mixin _$User {
   String get username => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
   Role get role => throw _privateConstructorUsedError;
+  Department get department => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
@@ -42,6 +43,7 @@ abstract class $UserCopyWith<$Res> {
       String username,
       String? password,
       Role role,
+      Department department,
       DateTime? createdAt,
       DateTime? updatedAt});
 }
@@ -63,6 +65,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? username = null,
     Object? password = freezed,
     Object? role = null,
+    Object? department = null,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -83,6 +86,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as Role,
+      department: null == department
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
+              as Department,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -107,6 +114,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String username,
       String? password,
       Role role,
+      Department department,
       DateTime? createdAt,
       DateTime? updatedAt});
 }
@@ -125,6 +133,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? username = null,
     Object? password = freezed,
     Object? role = null,
+    Object? department = null,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -145,6 +154,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as Role,
+      department: null == department
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
+              as Department,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -165,6 +178,7 @@ class _$UserImpl implements _User {
       required this.username,
       this.password,
       required this.role,
+      required this.department,
       this.createdAt,
       this.updatedAt});
 
@@ -180,13 +194,15 @@ class _$UserImpl implements _User {
   @override
   final Role role;
   @override
+  final Department department;
+  @override
   final DateTime? createdAt;
   @override
   final DateTime? updatedAt;
 
   @override
   String toString() {
-    return 'User(id: $id, username: $username, password: $password, role: $role, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'User(id: $id, username: $username, password: $password, role: $role, department: $department, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -200,6 +216,8 @@ class _$UserImpl implements _User {
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.role, role) || other.role == role) &&
+            (identical(other.department, department) ||
+                other.department == department) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -208,8 +226,8 @@ class _$UserImpl implements _User {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, username, password, role, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, username, password, role,
+      department, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -231,6 +249,7 @@ abstract class _User implements User {
       required final String username,
       final String? password,
       required final Role role,
+      required final Department department,
       final DateTime? createdAt,
       final DateTime? updatedAt}) = _$UserImpl;
 
@@ -244,6 +263,8 @@ abstract class _User implements User {
   String? get password;
   @override
   Role get role;
+  @override
+  Department get department;
   @override
   DateTime? get createdAt;
   @override

@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../domain/state/auth/auth_cubit.dart';
-
 @RoutePage()
 class RootScreen extends StatelessWidget {
   const RootScreen({super.key});
