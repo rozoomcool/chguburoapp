@@ -23,10 +23,8 @@ mixin _$User {
   int? get id => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
-  Role get role =>
-      throw _privateConstructorUsedError; // required Department department,
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  Role get role => throw _privateConstructorUsedError;
+  Profile? get profile => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,8 +41,9 @@ abstract class $UserCopyWith<$Res> {
       String username,
       String? password,
       Role role,
-      DateTime? createdAt,
-      DateTime? updatedAt});
+      Profile? profile});
+
+  $ProfileCopyWith<$Res>? get profile;
 }
 
 /// @nodoc
@@ -64,8 +63,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? username = null,
     Object? password = freezed,
     Object? role = null,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? profile = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -84,15 +82,23 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as Role,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      profile: freezed == profile
+          ? _value.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as Profile?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProfileCopyWith<$Res>? get profile {
+    if (_value.profile == null) {
+      return null;
+    }
+
+    return $ProfileCopyWith<$Res>(_value.profile!, (value) {
+      return _then(_value.copyWith(profile: value) as $Val);
+    });
   }
 }
 
@@ -108,8 +114,10 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String username,
       String? password,
       Role role,
-      DateTime? createdAt,
-      DateTime? updatedAt});
+      Profile? profile});
+
+  @override
+  $ProfileCopyWith<$Res>? get profile;
 }
 
 /// @nodoc
@@ -126,8 +134,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? username = null,
     Object? password = freezed,
     Object? role = null,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? profile = freezed,
   }) {
     return _then(_$UserImpl(
       id: freezed == id
@@ -146,14 +153,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as Role,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      profile: freezed == profile
+          ? _value.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as Profile?,
     ));
   }
 }
@@ -166,8 +169,7 @@ class _$UserImpl implements _User {
       required this.username,
       this.password,
       required this.role,
-      this.createdAt,
-      this.updatedAt});
+      this.profile});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -180,15 +182,12 @@ class _$UserImpl implements _User {
   final String? password;
   @override
   final Role role;
-// required Department department,
   @override
-  final DateTime? createdAt;
-  @override
-  final DateTime? updatedAt;
+  final Profile? profile;
 
   @override
   String toString() {
-    return 'User(id: $id, username: $username, password: $password, role: $role, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'User(id: $id, username: $username, password: $password, role: $role, profile: $profile)';
   }
 
   @override
@@ -202,16 +201,13 @@ class _$UserImpl implements _User {
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.role, role) || other.role == role) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+            (identical(other.profile, profile) || other.profile == profile));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, username, password, role, createdAt, updatedAt);
+  int get hashCode =>
+      Object.hash(runtimeType, id, username, password, role, profile);
 
   @JsonKey(ignore: true)
   @override
@@ -233,8 +229,7 @@ abstract class _User implements User {
       required final String username,
       final String? password,
       required final Role role,
-      final DateTime? createdAt,
-      final DateTime? updatedAt}) = _$UserImpl;
+      final Profile? profile}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
@@ -246,10 +241,8 @@ abstract class _User implements User {
   String? get password;
   @override
   Role get role;
-  @override // required Department department,
-  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt;
+  Profile? get profile;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>

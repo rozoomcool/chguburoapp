@@ -7,7 +7,7 @@ part 'document.g.dart';
 class Document with _$Document {
   const factory Document({
     num? id,
-    required String filename
+    required String filename,
   }) = _Document;
 
   factory Document.fromJson(Map<String, Object?> json)

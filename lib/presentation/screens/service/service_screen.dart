@@ -17,7 +17,6 @@ class ServiceScreen extends StatefulWidget {
 }
 
 class _ServiceScreenState extends State<ServiceScreen> {
-
   List<ServiceData> services = List.empty(growable: true);
   final ServiceDataApi _serviceDataApi = ServiceDataApi(GetIt.I<Dio>());
 
@@ -34,7 +33,6 @@ class _ServiceScreenState extends State<ServiceScreen> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -50,11 +48,20 @@ class _ServiceScreenState extends State<ServiceScreen> {
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             tileColor: Colors.white,
-            title: Text(services[index].title),
+            title: Text(
+              services[index].title,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge
+                  ?.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             shape: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide.none),
-              trailing: IconButton(icon: Icon(Iconsax.add_square), onPressed: () {  },),
+            trailing: IconButton(
+              icon: Icon(Iconsax.add_square),
+              onPressed: () {},
+            ),
           );
         },
       ),

@@ -8,7 +8,10 @@ Dio configureDio(AuthSharedRepository authSharedRepository) {
 
   final options = BaseOptions(
     baseUrl: 'http://$baseUrl',
-    headers: {"Accept": "application/json"},
+    headers: {
+      "Accept": "application/json",
+      "content-type": "application/json"
+      },
     connectTimeout: const Duration(seconds: 5),
     receiveTimeout: const Duration(seconds: 3),
   );

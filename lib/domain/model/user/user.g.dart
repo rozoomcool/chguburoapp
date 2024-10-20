@@ -11,12 +11,9 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       username: json['username'] as String,
       password: json['password'] as String?,
       role: $enumDecode(_$RoleEnumMap, json['role']),
-      createdAt: json['createdAt'] == null
+      profile: json['profile'] == null
           ? null
-          : DateTime.parse(json['createdAt'] as String),
-      updatedAt: json['updatedAt'] == null
-          ? null
-          : DateTime.parse(json['updatedAt'] as String),
+          : Profile.fromJson(json['profile'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
@@ -25,8 +22,7 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'username': instance.username,
       'password': instance.password,
       'role': _$RoleEnumMap[instance.role]!,
-      'createdAt': instance.createdAt?.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'profile': instance.profile,
     };
 
 const _$RoleEnumMap = {
