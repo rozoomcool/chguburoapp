@@ -11,6 +11,7 @@ import 'package:open_file/open_file.dart';
 
 import '../../../domain/api/service_data_api.dart';
 import '../../../domain/model/user/user.dart';
+import '../../../utils/ext_types.dart';
 
 @RoutePage()
 class HomeScreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final ServiceDataApi _apiService = ServiceDataApi(GetIt.I<Dio>());
 
   void fetchDocument(String filename) async {
-    var data = OpenFile.open((await _apiService.openDocument(filename)).path);
+    var data = OpenFile.open((await _apiService.openDocument(filename)).path, type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
   }
 
   @override
