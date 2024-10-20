@@ -17,10 +17,10 @@ Dio configureDio(AuthSharedRepository authSharedRepository) {
   );
 
   Dio dio = Dio(options);
-
   dio.interceptors.add(LogInterceptors());
   dio.interceptors.add(InterceptorsWrapper(
     onRequest: (options, handler) async {
+      print("::: ${authSharedRepository.getAccessToken()}");
       options.headers["Authorization"] =
           "Bearer ${authSharedRepository.getAccessToken()}";
       return handler.next(options);

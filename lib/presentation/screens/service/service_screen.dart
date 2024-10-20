@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:chguburoapp/domain/state/application/application_cubit.dart';
+import 'package:chguburoapp/domain/state/user/user_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -27,7 +30,8 @@ class _ServiceScreenState extends State<ServiceScreen> {
   }
 
   Future<void> fetchServicesData() async {
-    var data = await _serviceDataApi.getServiceData(Role.STUDENT);
+    var data = await _serviceDataApi
+        .getServiceData(context.read<UserCubit>().state?.role ?? Role.STUDENT);
     setState(() {
       services = data;
     });
@@ -47,6 +51,11 @@ class _ServiceScreenState extends State<ServiceScreen> {
         itemCount: services.length,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
+            onTap: () {
+              context
+                  .read<ApplicationCubit>()
+                  .createApplication(services[index].id?.toInt() ?? 1);
+            },
             tileColor: Colors.white,
             title: Text(
               services[index].title,
@@ -60,7 +69,11 @@ class _ServiceScreenState extends State<ServiceScreen> {
                 borderSide: BorderSide.none),
             trailing: IconButton(
               icon: Icon(Iconsax.add_square),
-              onPressed: () {},
+              onPressed: () {
+                context
+                    .read<ApplicationCubit>()
+                    .createApplication(services[index].id?.toInt() ?? 1);
+              },
             ),
           );
         },

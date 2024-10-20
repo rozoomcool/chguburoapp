@@ -23,6 +23,7 @@ mixin _$UserApplication {
   int? get id => throw _privateConstructorUsedError;
   ServiceData? get service => throw _privateConstructorUsedError;
   ApplicationStatus get applictionStatus => throw _privateConstructorUsedError;
+  Document? get document => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,9 +42,11 @@ abstract class $UserApplicationCopyWith<$Res> {
       {int? id,
       ServiceData? service,
       ApplicationStatus applictionStatus,
+      Document? document,
       User? user});
 
   $ServiceDataCopyWith<$Res>? get service;
+  $DocumentCopyWith<$Res>? get document;
   $UserCopyWith<$Res>? get user;
 }
 
@@ -63,6 +66,7 @@ class _$UserApplicationCopyWithImpl<$Res, $Val extends UserApplication>
     Object? id = freezed,
     Object? service = freezed,
     Object? applictionStatus = null,
+    Object? document = freezed,
     Object? user = freezed,
   }) {
     return _then(_value.copyWith(
@@ -78,6 +82,10 @@ class _$UserApplicationCopyWithImpl<$Res, $Val extends UserApplication>
           ? _value.applictionStatus
           : applictionStatus // ignore: cast_nullable_to_non_nullable
               as ApplicationStatus,
+      document: freezed == document
+          ? _value.document
+          : document // ignore: cast_nullable_to_non_nullable
+              as Document?,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -94,6 +102,18 @@ class _$UserApplicationCopyWithImpl<$Res, $Val extends UserApplication>
 
     return $ServiceDataCopyWith<$Res>(_value.service!, (value) {
       return _then(_value.copyWith(service: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DocumentCopyWith<$Res>? get document {
+    if (_value.document == null) {
+      return null;
+    }
+
+    return $DocumentCopyWith<$Res>(_value.document!, (value) {
+      return _then(_value.copyWith(document: value) as $Val);
     });
   }
 
@@ -122,10 +142,13 @@ abstract class _$$UserApplicationImplCopyWith<$Res>
       {int? id,
       ServiceData? service,
       ApplicationStatus applictionStatus,
+      Document? document,
       User? user});
 
   @override
   $ServiceDataCopyWith<$Res>? get service;
+  @override
+  $DocumentCopyWith<$Res>? get document;
   @override
   $UserCopyWith<$Res>? get user;
 }
@@ -144,6 +167,7 @@ class __$$UserApplicationImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? service = freezed,
     Object? applictionStatus = null,
+    Object? document = freezed,
     Object? user = freezed,
   }) {
     return _then(_$UserApplicationImpl(
@@ -159,6 +183,10 @@ class __$$UserApplicationImplCopyWithImpl<$Res>
           ? _value.applictionStatus
           : applictionStatus // ignore: cast_nullable_to_non_nullable
               as ApplicationStatus,
+      document: freezed == document
+          ? _value.document
+          : document // ignore: cast_nullable_to_non_nullable
+              as Document?,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -174,6 +202,7 @@ class _$UserApplicationImpl implements _UserApplication {
       {this.id,
       this.service,
       this.applictionStatus = ApplicationStatus.SENT,
+      this.document,
       this.user});
 
   factory _$UserApplicationImpl.fromJson(Map<String, dynamic> json) =>
@@ -187,11 +216,13 @@ class _$UserApplicationImpl implements _UserApplication {
   @JsonKey()
   final ApplicationStatus applictionStatus;
   @override
+  final Document? document;
+  @override
   final User? user;
 
   @override
   String toString() {
-    return 'UserApplication(id: $id, service: $service, applictionStatus: $applictionStatus, user: $user)';
+    return 'UserApplication(id: $id, service: $service, applictionStatus: $applictionStatus, document: $document, user: $user)';
   }
 
   @override
@@ -203,13 +234,15 @@ class _$UserApplicationImpl implements _UserApplication {
             (identical(other.service, service) || other.service == service) &&
             (identical(other.applictionStatus, applictionStatus) ||
                 other.applictionStatus == applictionStatus) &&
+            (identical(other.document, document) ||
+                other.document == document) &&
             (identical(other.user, user) || other.user == user));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, service, applictionStatus, user);
+      Object.hash(runtimeType, id, service, applictionStatus, document, user);
 
   @JsonKey(ignore: true)
   @override
@@ -231,6 +264,7 @@ abstract class _UserApplication implements UserApplication {
       {final int? id,
       final ServiceData? service,
       final ApplicationStatus applictionStatus,
+      final Document? document,
       final User? user}) = _$UserApplicationImpl;
 
   factory _UserApplication.fromJson(Map<String, dynamic> json) =
@@ -242,6 +276,8 @@ abstract class _UserApplication implements UserApplication {
   ServiceData? get service;
   @override
   ApplicationStatus get applictionStatus;
+  @override
+  Document? get document;
   @override
   User? get user;
   @override

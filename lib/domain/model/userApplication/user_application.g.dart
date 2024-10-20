@@ -16,6 +16,9 @@ _$UserApplicationImpl _$$UserApplicationImplFromJson(
       applictionStatus: $enumDecodeNullable(
               _$ApplicationStatusEnumMap, json['applictionStatus']) ??
           ApplicationStatus.SENT,
+      document: json['document'] == null
+          ? null
+          : Document.fromJson(json['document'] as Map<String, dynamic>),
       user: json['user'] == null
           ? null
           : User.fromJson(json['user'] as Map<String, dynamic>),
@@ -28,6 +31,7 @@ Map<String, dynamic> _$$UserApplicationImplToJson(
       'service': instance.service,
       'applictionStatus':
           _$ApplicationStatusEnumMap[instance.applictionStatus]!,
+      'document': instance.document,
       'user': instance.user,
     };
 

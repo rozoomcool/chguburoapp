@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:chguburoapp/domain/state/application/application_cubit.dart';
 import 'package:chguburoapp/domain/state/auth/auth_cubit.dart';
 import 'package:chguburoapp/domain/state/theme/theme_cubit.dart';
 import 'package:chguburoapp/domain/state/user/user_cubit.dart';
@@ -16,7 +17,10 @@ class RootScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => UserCubit()..init())],
+      providers: [
+        BlocProvider(create: (context) => UserCubit()..init()),
+        BlocProvider(create: (context) => ApplicationCubit()..init()),
+        ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
           return AutoTabsScaffold(

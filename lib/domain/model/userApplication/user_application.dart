@@ -1,3 +1,4 @@
+import 'package:chguburoapp/domain/model/document/document.dart';
 import 'package:chguburoapp/domain/model/service_data/service_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,6 +14,7 @@ class UserApplication with _$UserApplication {
     int? id,
     ServiceData? service,
     @Default(ApplicationStatus.SENT) ApplicationStatus applictionStatus,
+    Document? document,
     User? user
   }) = _UserApplication;
 

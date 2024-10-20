@@ -34,6 +34,7 @@ class AuthCubit extends Cubit<AuthState> {
       debugPrint(response.requestOptions.path);
       if (response.statusCode == 200) {
         var tokens = JwtPayload.fromJson(response.data);
+        print(tokens);
         _authSharedRepository.setTokens(tokens.access, tokens.refresh);
         GetIt.I<Dio>()
             .options

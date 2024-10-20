@@ -11,7 +11,7 @@ class UserApplicationApiService {
   // Получить все заявки пользователя (с фильтрацией по пользователю)
   Future<List<UserApplication>> getMyApplications() async {
     try {
-      final response = await _dio.get('application');
+      final response = await _dio.get('/application');
       return (response.data as List)
           .map((app) => UserApplication.fromJson(app))
           .toList();
@@ -22,31 +22,29 @@ class UserApplicationApiService {
   }
 
   // Получить все заявки по статусу
-  Future<List<UserApplication>> getAllApplicationsByStatus(
-      String token, ApplicationStatus status) async {
-    try {
+  Future<List<UserApplication>> getAllApplications(ApplicationStatus status) async {
+    // try {
       final response = await _dio.get(
-        'application/a',
-        queryParameters: {'status': status.name},
-        options: Options(headers: {'Authorization': 'Bearer $token'}),
+        '/application/a',
+        queryParameters: {"status": status.name}
       );
       return (response.data as List)
           .map((app) => UserApplication.fromJson(app))
           .toList();
-    } on DioException catch (e) {
-      debugPrint('Error: ${e.response?.data}');
-      throw Exception('Failed to load applications');
-    }
+    // } on DioException catch (e) {
+    //   debugPrint('Error: ${e.response?.data}');
+    //   throw Exception('Failed to load applications');
+    // }
   }
 
   // Создание новой заявки
-  Future<UserApplication> createApplication(String token, int serviceId) async {
+  Future<UserApplication> createApplication(int serviceId) async {
     try {
       final response = await _dio.post(
-        'application/a',
+        '/application',
         queryParameters: {'serviceId': serviceId},
-        options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
+      print(response.data.toString());
       return UserApplication.fromJson(response.data);
     } on DioException catch (e) {
       debugPrint('Error: ${e.response?.data}');
@@ -55,16 +53,14 @@ class UserApplicationApiService {
   }
 
   // Изменить статус заявки
-  Future<UserApplication> changeApplicationStatus(
-      String token, int appId, ApplicationStatus status) async {
+  Future<UserApplication> changeApplicationStatus(int appId, ApplicationStatus status) async {
     try {
       final response = await _dio.put(
-        'application/a',
+        '/application/a',
         queryParameters: {
           'appId': appId,
           'status': status.name,
         },
-        options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
       return UserApplication.fromJson(response.data);
     } on DioException catch (e) {
