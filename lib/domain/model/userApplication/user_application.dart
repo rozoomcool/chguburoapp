@@ -13,7 +13,7 @@ class UserApplication with _$UserApplication {
   const factory UserApplication({
     int? id,
     ServiceData? service,
-    @Default(ApplicationStatus.SENT) ApplicationStatus applictionStatus,
+    @Default(ApplicationStatus.SENT) ApplicationStatus applicationStatus,
     Document? document,
     User? user
   }) = _UserApplication;

@@ -13,8 +13,8 @@ _$UserApplicationImpl _$$UserApplicationImplFromJson(
       service: json['service'] == null
           ? null
           : ServiceData.fromJson(json['service'] as Map<String, dynamic>),
-      applictionStatus: $enumDecodeNullable(
-              _$ApplicationStatusEnumMap, json['applictionStatus']) ??
+      applicationStatus: $enumDecodeNullable(
+              _$ApplicationStatusEnumMap, json['applicationStatus']) ??
           ApplicationStatus.SENT,
       document: json['document'] == null
           ? null
@@ -29,8 +29,8 @@ Map<String, dynamic> _$$UserApplicationImplToJson(
     <String, dynamic>{
       'id': instance.id,
       'service': instance.service,
-      'applictionStatus':
-          _$ApplicationStatusEnumMap[instance.applictionStatus]!,
+      'applicationStatus':
+          _$ApplicationStatusEnumMap[instance.applicationStatus]!,
       'document': instance.document,
       'user': instance.user,
     };

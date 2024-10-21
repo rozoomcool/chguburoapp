@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Expanded(
                                       flex: 1,
                                       child: Text(
-                                        state[index].applictionStatus.name,
+                                        state[index].applicationStatus.name,
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyLarge

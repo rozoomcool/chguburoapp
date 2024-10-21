@@ -12,6 +12,7 @@ class UserApplicationApiService {
   Future<List<UserApplication>> getMyApplications() async {
     try {
       final response = await _dio.get('/application');
+      print(response);
       return (response.data as List)
           .map((app) => UserApplication.fromJson(app))
           .toList();
@@ -22,15 +23,16 @@ class UserApplicationApiService {
   }
 
   // Получить все заявки по статусу
-  Future<List<UserApplication>> getAllApplications(ApplicationStatus status) async {
+  Future<List<UserApplication>> getAllApplications(
+      ApplicationStatus status) async {
     // try {
-      final response = await _dio.get(
-        '/application/a',
-        queryParameters: {"status": status.name}
-      );
-      return (response.data as List)
-          .map((app) => UserApplication.fromJson(app))
-          .toList();
+    final response = await _dio
+        .get('/application/a', queryParameters: {"status": status.name});
+    print(response);
+
+    return (response.data as List)
+        .map((app) => UserApplication.fromJson(app))
+        .toList();
     // } on DioException catch (e) {
     //   debugPrint('Error: ${e.response?.data}');
     //   throw Exception('Failed to load applications');
@@ -53,7 +55,8 @@ class UserApplicationApiService {
   }
 
   // Изменить статус заявки
-  Future<UserApplication> changeApplicationStatus(int appId, ApplicationStatus status) async {
+  Future<UserApplication> changeApplicationStatus(
+      int appId, ApplicationStatus status) async {
     try {
       final response = await _dio.put(
         '/application/a',

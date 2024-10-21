@@ -22,7 +22,7 @@ UserApplication _$UserApplicationFromJson(Map<String, dynamic> json) {
 mixin _$UserApplication {
   int? get id => throw _privateConstructorUsedError;
   ServiceData? get service => throw _privateConstructorUsedError;
-  ApplicationStatus get applictionStatus => throw _privateConstructorUsedError;
+  ApplicationStatus get applicationStatus => throw _privateConstructorUsedError;
   Document? get document => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
 
@@ -41,7 +41,7 @@ abstract class $UserApplicationCopyWith<$Res> {
   $Res call(
       {int? id,
       ServiceData? service,
-      ApplicationStatus applictionStatus,
+      ApplicationStatus applicationStatus,
       Document? document,
       User? user});
 
@@ -65,7 +65,7 @@ class _$UserApplicationCopyWithImpl<$Res, $Val extends UserApplication>
   $Res call({
     Object? id = freezed,
     Object? service = freezed,
-    Object? applictionStatus = null,
+    Object? applicationStatus = null,
     Object? document = freezed,
     Object? user = freezed,
   }) {
@@ -78,9 +78,9 @@ class _$UserApplicationCopyWithImpl<$Res, $Val extends UserApplication>
           ? _value.service
           : service // ignore: cast_nullable_to_non_nullable
               as ServiceData?,
-      applictionStatus: null == applictionStatus
-          ? _value.applictionStatus
-          : applictionStatus // ignore: cast_nullable_to_non_nullable
+      applicationStatus: null == applicationStatus
+          ? _value.applicationStatus
+          : applicationStatus // ignore: cast_nullable_to_non_nullable
               as ApplicationStatus,
       document: freezed == document
           ? _value.document
@@ -141,7 +141,7 @@ abstract class _$$UserApplicationImplCopyWith<$Res>
   $Res call(
       {int? id,
       ServiceData? service,
-      ApplicationStatus applictionStatus,
+      ApplicationStatus applicationStatus,
       Document? document,
       User? user});
 
@@ -166,7 +166,7 @@ class __$$UserApplicationImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? service = freezed,
-    Object? applictionStatus = null,
+    Object? applicationStatus = null,
     Object? document = freezed,
     Object? user = freezed,
   }) {
@@ -179,9 +179,9 @@ class __$$UserApplicationImplCopyWithImpl<$Res>
           ? _value.service
           : service // ignore: cast_nullable_to_non_nullable
               as ServiceData?,
-      applictionStatus: null == applictionStatus
-          ? _value.applictionStatus
-          : applictionStatus // ignore: cast_nullable_to_non_nullable
+      applicationStatus: null == applicationStatus
+          ? _value.applicationStatus
+          : applicationStatus // ignore: cast_nullable_to_non_nullable
               as ApplicationStatus,
       document: freezed == document
           ? _value.document
@@ -201,7 +201,7 @@ class _$UserApplicationImpl implements _UserApplication {
   const _$UserApplicationImpl(
       {this.id,
       this.service,
-      this.applictionStatus = ApplicationStatus.SENT,
+      this.applicationStatus = ApplicationStatus.SENT,
       this.document,
       this.user});
 
@@ -214,7 +214,7 @@ class _$UserApplicationImpl implements _UserApplication {
   final ServiceData? service;
   @override
   @JsonKey()
-  final ApplicationStatus applictionStatus;
+  final ApplicationStatus applicationStatus;
   @override
   final Document? document;
   @override
@@ -222,7 +222,7 @@ class _$UserApplicationImpl implements _UserApplication {
 
   @override
   String toString() {
-    return 'UserApplication(id: $id, service: $service, applictionStatus: $applictionStatus, document: $document, user: $user)';
+    return 'UserApplication(id: $id, service: $service, applicationStatus: $applicationStatus, document: $document, user: $user)';
   }
 
   @override
@@ -232,8 +232,8 @@ class _$UserApplicationImpl implements _UserApplication {
             other is _$UserApplicationImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.service, service) || other.service == service) &&
-            (identical(other.applictionStatus, applictionStatus) ||
-                other.applictionStatus == applictionStatus) &&
+            (identical(other.applicationStatus, applicationStatus) ||
+                other.applicationStatus == applicationStatus) &&
             (identical(other.document, document) ||
                 other.document == document) &&
             (identical(other.user, user) || other.user == user));
@@ -242,7 +242,7 @@ class _$UserApplicationImpl implements _UserApplication {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, service, applictionStatus, document, user);
+      Object.hash(runtimeType, id, service, applicationStatus, document, user);
 
   @JsonKey(ignore: true)
   @override
@@ -263,7 +263,7 @@ abstract class _UserApplication implements UserApplication {
   const factory _UserApplication(
       {final int? id,
       final ServiceData? service,
-      final ApplicationStatus applictionStatus,
+      final ApplicationStatus applicationStatus,
       final Document? document,
       final User? user}) = _$UserApplicationImpl;
 
@@ -275,7 +275,7 @@ abstract class _UserApplication implements UserApplication {
   @override
   ServiceData? get service;
   @override
-  ApplicationStatus get applictionStatus;
+  ApplicationStatus get applicationStatus;
   @override
   Document? get document;
   @override
